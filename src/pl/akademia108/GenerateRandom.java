@@ -16,10 +16,13 @@ public class GenerateRandom implements Runnable {
 @Override
     public void run() {
         while (this.random_int != this.breakNumber) {
-                int random_int = (int) Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+            try {
+                this.random_int = (int) Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
                 System.out.println(random_int);
                 Thread.sleep(5000);
-
+        } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
         }
     }
 }
